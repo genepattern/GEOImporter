@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="create-zip" name="GEOImporter">
+
+	<property name="dirOffset" value="../"/>
+	<import file="${dirOffset}/commontargets.xml"/>
+	
+	<target name="create-zip" depends="init">
+		<antcall target="prezip"/>
+		<zip destfile="${dest.dir}/${ant.project.name}.zip" whenempty="fail" defaultexcludes="true">
+			<fileset dir="." includes="manifest, *.pdf">
+			</fileset>
+	
+			<fileset dir="../common/R">
+				<include name="common.R"/>
+			</fileset>
+			
+			<fileset dir="src">
+				<include name="*.R"/>
+			</fileset>
+			<fileset dir="lib">
+				<include name="*"/>
+			</fileset>
+		</zip>
+		<antcall target="postzip"/>
+	</target>
+
+</project>

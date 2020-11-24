@@ -1,11 +1,12 @@
-#Thu Nov 01 20:31:22 EDT 2007
+#Tue Nov 24 19:37:11 UTC 2020
 author=Joshua Gould, Broad Institute
-commandLine=<R2.5> <libdir>main.R run <libdir> -d<data.column.name> -o<output.filename> -a<GEO.accession> -f<GEO.SOFT.file> -1<ftp.proxy.server> -2<ftp.proxy.username> -3<ftp.proxy.password> -4<http.proxy.server> -5<http.proxy.username> -6<http.proxy.password>
+commandLine=<Rscript> <libdir>main.R <libdir> -d<data.column.name> -o<output.filename> -a<GEO.accession> -f<GEO.SOFT.file> -1<ftp.proxy.server> -2<ftp.proxy.username> -3<ftp.proxy.password> -4<http.proxy.server> -5<http.proxy.username> -6<http.proxy.password>
 cpuType=any
 description=Imports data from the Gene Expression Omnibus (GEO)
 fileFormat=gct
-JVMLevel=2.5.0
-language=R
+job.docker.image=jupyter/datascience-notebook\:r-4.0.3
+JVMLevel=
+language=any
 LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00042\:4.6
 name=GEOImporter
 os=any
@@ -90,4 +91,4 @@ requiredPatchLSIDs=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.server.
 requiredPatchURLs=http\://www.broad.mit.edu/webservices/gpModuleRepository/download/prod/patch/?file\=/R_2_5_Check/broad.mit.edu\:cancer.software.genepattern.server.patch/00009/1/R2_5.zip
 taskType=Preprocess & Utilities
 userid=GenePattern
-version=Updated for R 2.5
+version=Updated for R 4.0.3

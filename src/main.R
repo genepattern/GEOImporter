@@ -58,17 +58,21 @@ GdsToGct <- function(gds=NULL, gct.output.filename) {
 }
 
 install.required.packages <- function(libdir) {
+	if(!is.package.installed(libdir, "BiocGenerics")) {
+		info("installing BiocGenerics")
+		install.package(libdir, "BiocGenerics_0.36.0.zip", "BiocGenerics_0.36.0.tgz", "BiocGenerics_0.36.0.tar.gz")
+	}        
 	if(!is.package.installed(libdir, "Biobase")) {
 		info("installing Biobase")
-		install.package(libdir, "Biobase_1.14.1.zip", "Biobase_1.14.1.tgz", "Biobase_1.14.1.tar.gz")
+		install.package(libdir, "Biobase_2.50.0.zip", "Biobase_2.50.0.tgz", "Biobase_2.50.0.tar.gz")
 	}        
 }
 
-run <- function(libdir, ...) {
-	suppressMessages(.run(libdir, ...))
+run <- function(libdir, args) {
+	suppressMessages(.run(libdir, args))
 }
 
-.run <- function(libdir, ...) {
+.run <- function(libdir, args) {
 	
 	library(methods)
 	library(tools)
@@ -84,7 +88,6 @@ run <- function(libdir, ...) {
 	
 	source(paste(libdir, "GEOquery.R", sep=''))
 	DEBUG <<- F
-	args <- list(...)
 	geo.id <- NULL
 	filename <- NULL
 	data.column.name <- 'VALUE'
@@ -112,17 +115,17 @@ run <- function(libdir, ...) {
 			data.column.name <- value
 		} else if(flag=='-o') {
 			gct.output.filename <- value
-		} else if(flag=='1') {
+		} else if(flag=='-1') {
 			ftp.proxy.server <- value
-		} else if(flag=='2') {
+		} else if(flag=='-2') {
 			ftp.proxy.user <- value
-		} else if(flag=='3') {
+		} else if(flag=='-3') {
 			ftp.proxy.password <- value
-		} else if(flag=='4') {
+		} else if(flag=='-4') {
 			http.proxy.server <- value
-		} else if(flag=='5') {
+		} else if(flag=='-5') {
 			http.proxy.user <- value
-		} else if(flag=='6') {
+		} else if(flag=='-6') {
 			http.proxy.password <- value
 		}
 	}
@@ -175,3 +178,6 @@ run <- function(libdir, ...) {
 		exit("Can only retrieve data for GEO Datasets and GEO Series")
 	}
 }
+
+init = commandArgs(trailingOnly = TRUE)
+run(libdir = init[1], args = as.list(init))

@@ -5,6 +5,7 @@ cpuType=any
 description=Imports data from the Gene Expression Omnibus (GEO)
 fileFormat=gct
 job.docker.image=jupyter/datascience-notebook\:r-4.0.3
+src.repo=https://github.com/genepattern/GEOImporter
 JVMLevel=
 language=any
 LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00042\:5.1
@@ -100,8 +101,8 @@ p11_value=
 privacy=public
 publicationDate=11/01/2007 20\:31 
 quality=production
-requiredPatchLSIDs=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.server.patch\:00009\:1
-requiredPatchURLs=http\://www.broad.mit.edu/webservices/gpModuleRepository/download/prod/patch/?file\=/R_2_5_Check/broad.mit.edu\:cancer.software.genepattern.server.patch/00009/1/R2_5.zip
+#requiredPatchLSIDs=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.server.patch\:00009\:1
+#requiredPatchURLs=http\://www.broad.mit.edu/webservices/gpModuleRepository/download/prod/patch/?file\=/R_2_5_Check/broad.mit.edu\:cancer.software.genepattern.server.patch/00009/1/R2_5.zip
 taskType=Preprocess & Utilities
 userid=GenePattern
-version=Updated for R 4.0.3 - updated doc for beta release
+version=PR 4 from Anthony - Omit NA option - remove requiredPatches

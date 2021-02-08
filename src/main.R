@@ -4,7 +4,7 @@ message <- function (..., domain = NULL, appendLF = TRUE) {
 
 # GSExxx, Series
 GseToGct <- function(gse=NULL, data.column.name='VALUE',
-					gct.output.filename=NULL) {
+					gct.output.filename=NULL, omit.na=FALSE) {
 	t <- Table(GPLList(gse)[[1]])
 	ids <- t$ID # ids in GPL
 	
@@ -24,7 +24,14 @@ GseToGct <- function(gse=NULL, data.column.name='VALUE',
 		mymatch <- match(ids, tab$ID_REF)
 		return(tab[,data.column.name][mymatch])
 	}))
-	
+
+	if(omit.na==TRUE) {
+		filter <- which(rowSums(is.na(data.matrix)) != ncol(data.matrix))
+		data.matrix <- data.matrix[filter,]
+		desc <- desc[filter]
+		ids<- ids[filter]
+	}
+
 	row.names(data.matrix) <- ids
 	gct <- list(data=data.matrix, row.descriptions=desc)
 	write.gct(gct, gct.output.filename)
@@ -33,7 +40,8 @@ GseToGct <- function(gse=NULL, data.column.name='VALUE',
 
 
 # GDSxxx, e.g. GDS1, GDS2577
-GdsToGct <- function(gds=NULL, gct.output.filename) {
+GdsToGct <- function(gds=NULL, gct.output.filename,
+					omit.na=FALSE) {
 	eset <- GDS2eSet(gds, do.log2 = FALSE)
 	f <- eset@featureData
 	annotations <- row.names(varMetadata(f))
@@ -111,6 +119,8 @@ run <- function(libdir, args) {
 			geo.id <- value
 		} else if(flag=='-f') {
 			filename <- value
+		} else if(flag=='-n') {
+			omit.na <- as.logical(value)
 		} else if(flag=='-d') {
 			data.column.name <- value
 		} else if(flag=='-o') {
@@ -170,7 +180,7 @@ run <- function(libdir, args) {
 	if (class(geo.query) == "GSE") {
 		info("converting GSE...") 
 		GseToGct(gse=geo.query, data.column.name=data.column.name,
-			gct.output.filename=gct.output.filename)
+			gct.output.filename=gct.output.filename, omit.na=omit.na)
 	} else if (class(geo.query) == "GDS") {
 		info("converting GDS...")
 		GdsToGct(gds=geo.query, gct.output.filename=gct.output.filename)

@@ -441,11 +441,12 @@ is.package.installed <- function(libdir, pkg) {
 	return(file.exists(f) && file.info(f)[["isdir"]])
 }
 
-
-install.package <- function(dir, other) {
+suppressMessages(
+	install.package <- function(dir, other) {
 		f <- paste(dir, other, sep="")
 		.install.unix(f)
 	}
+)
 
 .install.unix <- function(pkg) {
 	if(DEBUG) {

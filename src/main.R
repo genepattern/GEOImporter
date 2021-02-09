@@ -64,7 +64,6 @@ GdsToGct <- function(gds=NULL, gct.output.filename,
 	gct <- list(data=exprs(eset), row.descriptions=row.descriptions)
 	write.gct(gct, gct.output.filename)
 }
-suppressMessages(
 	install.required.packages <- function(libdir) {
 	if(!is.package.installed(libdir, "BiocGenerics")) {
 		info("installing BiocGenerics")
@@ -74,7 +73,7 @@ suppressMessages(
 		info("installing Biobase")
 		install.package(libdir, "Biobase_2.50.0.tar.gz")
 	}        
-})
+}
 
 run <- function(libdir, args) {
 	suppressMessages(.run(libdir, args))

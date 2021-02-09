@@ -1,4 +1,3 @@
-sink(stdout(), type = "message")
 message <- function (..., domain = NULL, appendLF = TRUE) {
 
 }
@@ -65,17 +64,17 @@ GdsToGct <- function(gds=NULL, gct.output.filename,
 	gct <- list(data=exprs(eset), row.descriptions=row.descriptions)
 	write.gct(gct, gct.output.filename)
 }
-# note that the Docker image only pulls in the "other" images as the Docker images is Linux based.
-install.required.packages <- function(libdir) {
+suppressMessages(
+	install.required.packages <- function(libdir) {
 	if(!is.package.installed(libdir, "BiocGenerics")) {
 		info("installing BiocGenerics")
-		install.package(libdir, "BiocGenerics_0.36.0.zip", "BiocGenerics_0.36.0.tgz", "BiocGenerics_0.36.0.tar.gz")
+		install.package(libdir, "BiocGenerics_0.36.0.tar.gz")
 	}        
 	if(!is.package.installed(libdir, "Biobase")) {
 		info("installing Biobase")
-		install.package(libdir, "Biobase_2.50.0.zip", "Biobase_2.50.0.tgz", "Biobase_2.50.0.tar.gz")
+		install.package(libdir, "Biobase_2.50.0.tar.gz")
 	}        
-}
+})
 
 run <- function(libdir, args) {
 	suppressMessages(.run(libdir, args))

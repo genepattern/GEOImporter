@@ -442,27 +442,10 @@ is.package.installed <- function(libdir, pkg) {
 }
 
 
-install.package <- function(dir, windows, mac, other) {
-	isWindows <- Sys.info()[["sysname"]]=="Windows"
-	isMac <- Sys.info()[["sysname"]]=="Darwin" 
-	if(isWindows) {
-		f <- paste(dir, windows, sep="")
-		.install.windows(f)
-	} else if(isMac) {
-		f <- paste(dir, mac, sep="")
-      .install.unix(f)
-	} else { # install from source
+install.package <- function(dir, other) {
 		f <- paste(dir, other, sep="")
 		.install.unix(f)
-	}	
-}
-
-.install.windows <- function(pkg) {
-	if(DEBUG) {
-		info("Installing windows package ", pkg)
 	}
-	install.packages(pkg, .libPaths()[1], repos=NULL)
-}
 
 .install.unix <- function(pkg) {
 	if(DEBUG) {
@@ -504,26 +487,13 @@ exit <- function(...) {
 	stop(s, call. = FALSE)
 }
 
-isWindows <- function() {
-	Sys.info()[["sysname"]]=="Windows"
-}
-
-
-isMac <- function() {
-	Sys.info()[["sysname"]]=="Darwin" 
-}
-
 unzip <- function(zip.filename, dest) {
 	if(is.null(dest)) {
 		dest = getwd()
 	}
-	if(isWindows()) {
-		zip.unpack(zip.filename, dest=dest)
-	} else {
       unzip <- getOption("unzip")
       system(paste(unzip, "-q", zip.filename, "-d", dest))
 	}
-}
 
 get.arg <- function(key, args, default.value='') {
 	if(is.null(args[key])) {

@@ -1,3 +1,4 @@
+sink(stdout(), type = "message")
 message <- function (..., domain = NULL, appendLF = TRUE) {
 
 }

@@ -64,7 +64,7 @@ GdsToGct <- function(gds=NULL, gct.output.filename,
 	gct <- list(data=exprs(eset), row.descriptions=row.descriptions)
 	write.gct(gct, gct.output.filename)
 }
-
+# note that the Docker image only pulls in the "other" images as the Docker images is Linux based.
 install.required.packages <- function(libdir) {
 	if(!is.package.installed(libdir, "BiocGenerics")) {
 		info("installing BiocGenerics")

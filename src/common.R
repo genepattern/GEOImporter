@@ -441,14 +441,12 @@ is.package.installed <- function(libdir, pkg) {
 	return(file.exists(f) && file.info(f)[["isdir"]])
 }
 
-suppressMessages(
-	install.package <- function(dir, other) {
-		f <- paste(dir, other, sep="")
-		.install.unix(f)
-	}
-)
+install.package <- function(dir, other) {
+	f <- paste(dir, other, sep="")
+	.install.unix(f)
+}
 
-.install.unix <- function(pkg) {
+suppressMessages(.install.unix <- function(pkg) {
 	if(DEBUG) {
 		info("Installing package ", pkg)
 	}
@@ -458,9 +456,9 @@ suppressMessages(
     cmd <- paste(cmd, "-l", lib)
     cmd <- paste(cmd, " '", pkg, "'", sep = "")
     status <- system(cmd)
-    if (status != 0) 
+    if (status != 0)
     	cat("\tpackage installation failed\n")
-}
+})
 
 trim <- function(s) {
 	sub(' +$', '', s) 

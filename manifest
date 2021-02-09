@@ -1,7 +1,7 @@
 #Tue Nov 24 19:37:11 UTC 2020
 author=Joshua Gould, Broad Institute; Anthony Castanza, UCSD; Barbara Hill, Broad Institute
 #ORIG commandLine=<Rscript> <libdir>main.R <libdir> -n<Drop.NA.Rows> -d<data.column.name> -o<output.filename> -a<GEO.accession> -f<GEO.SOFT.file> -1<ftp.proxy.server> -2<ftp.proxy.username> -3<ftp.proxy.password> -4<http.proxy.server> -5<http.proxy.username> -6<http.proxy.password>
-commandLine=Rscript --no-save --quiet --slave --no-restore /GEOImporter/main.R /GEOImporter -n<Drop.NA.Rows> -d<data.column.name> -o<output.filename> -a<GEO.accession> -f<GEO.SOFT.file> -1<ftp.proxy.server> -2<ftp.proxy.username> -3<ftp.proxy.password> -4<http.proxy.server> -5<http.proxy.username> -6<http.proxy.password>
+commandLine=Rscript --no-save --quiet --slave --no-restore /GEOImporter/main.R /GEOImporter/ -n<Drop.NA.Rows> -d<data.column.name> -o<output.filename> -a<GEO.accession> -f<GEO.SOFT.file> -1<ftp.proxy.server> -2<ftp.proxy.username> -3<ftp.proxy.password> -4<http.proxy.server> -5<http.proxy.username> -6<http.proxy.password>
 cpuType=any
 description=Imports data from the Gene Expression Omnibus (GEO)
 fileFormat=gct

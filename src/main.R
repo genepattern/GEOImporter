@@ -67,12 +67,11 @@ GdsToGct <- function(gds=NULL, gct.output.filename,
 	install.required.packages <- function(libdir) {
 	if(!is.package.installed(libdir, "BiocGenerics")) {
 		info("installing BiocGenerics")
-		install.package(libdir, "BiocGenerics_0.36.0.tar.gz")
+		install.package(libdir, "BiocGenerics_0.36.0.tar.gz", quiet=TRUE)
 	}        
 	if(!is.package.installed(libdir, "Biobase")) {
 		info("installing Biobase")
-		suppressMessages(suppressWarnings(install.package(libdir, "Biobase_2.50.0.tar.gz")
-		))
+		install.package(libdir, "Biobase_2.50.0.tar.gz", quiet=TRUE)
 	}        
 }
 

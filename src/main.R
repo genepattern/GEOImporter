@@ -64,7 +64,8 @@ GdsToGct <- function(gds=NULL, gct.output.filename,
 	gct <- list(data=exprs(eset), row.descriptions=row.descriptions)
 	write.gct(gct, gct.output.filename)
 }
-	install.required.packages <- function(libdir) {
+
+install.required.packages <- function(libdir) {
 	if(!is.package.installed(libdir, "BiocGenerics")) {
 		info("installing BiocGenerics")
 		install.package(libdir, "BiocGenerics_0.36.0.tar.gz")

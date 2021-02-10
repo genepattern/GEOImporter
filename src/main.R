@@ -71,7 +71,8 @@ GdsToGct <- function(gds=NULL, gct.output.filename,
 	}        
 	if(!is.package.installed(libdir, "Biobase")) {
 		info("installing Biobase")
-		install.package(libdir, "Biobase_2.50.0.tar.gz")
+		suppressMessages(suppressWarnings(install.package(libdir, "Biobase_2.50.0.tar.gz")
+		))
 	}        
 }
 

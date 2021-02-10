@@ -446,19 +446,19 @@ install.package <- function(dir, other) {
 	.install.unix(f)
 }
 
-suppressMessages(.install.unix <- function(pkg) {
+.install.unix <- function(pkg) {
 	if(DEBUG) {
 		info("Installing package ", pkg)
 	}
     lib <- .libPaths()[1]
    # cmd <- paste(file.path(R.home(), "bin", "R"), "CMD INSTALL --with-package-versions")
-	 cmd <- paste(file.path(R.home(), "bin", "R"), "CMD INSTALL")
+	cmd <- paste(file.path(R.home(), "bin", "R"), "CMD INSTALL")
     cmd <- paste(cmd, "-l", lib)
     cmd <- paste(cmd, " '", pkg, "'", sep = "")
     status <- system(cmd)
     if (status != 0)
     	cat("\tpackage installation failed\n")
-})
+}
 
 trim <- function(s) {
 	sub(' +$', '', s) 

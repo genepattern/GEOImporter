@@ -65,16 +65,18 @@ GdsToGct <- function(gds=NULL, gct.output.filename,
 	write.gct(gct, gct.output.filename)
 }
 
-#install.required.packages <- function(libdir) {
-	#if(!is.package.installed(libdir, "BiocGenerics")) {
+install.required.packages <- function(libdir) {
+	if(!is.package.installed(libdir, "BiocGenerics")) {
+        info(pkg, "is not installed")
 		#info("installing BiocGenerics")
 		#install.package(libdir, "BiocGenerics_0.36.0.tar.gz")
-	#}
-#	#if(!is.package.installed(libdir, "Biobase")) {
+	}
+	if(!is.package.installed(libdir, "Biobase")) {
+		info(pkg, "is not installed")
 #		info("installing Biobase")
 #		install.package(libdir, "Biobase_2.50.0.tar.gz")
-#	}
-#}
+	}
+}
 
 run <- function(libdir, args) {
 	suppressMessages(.run(libdir, args))
@@ -87,12 +89,12 @@ run <- function(libdir, args) {
 	
 	source(paste(libdir, "common.R", sep=''))
 	
-	#if(libdir!='') {
-		#setLibPath(libdir)
-		#install.required.packages(libdir)
-	#}
+	if(libdir!='') {
+		setLibPath(libdir)
+		install.required.packages(libdir)
+	}
 	
-	#library(Biobase)
+	library(Biobase)
 	
 	source(paste(libdir, "GEOquery.R", sep=''))
 	DEBUG <<- F

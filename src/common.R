@@ -436,11 +436,11 @@ function(gct, filename, check.file.extension=TRUE)
 	return(filename)
 }
 
-#is.package.installed <- function(libdir, pkg) {
-#	f <- paste(libdir, pkg, sep='')
-#	return(file.exists(f) && file.info(f)[["isdir"]])
-#}
-#
+is.package.installed <- function(libdir, pkg) {
+	f <- paste(libdir, pkg, sep='')
+	return(file.exists(f) && file.info(f)[["isdir"]])
+}
+
 #install.package <- function(dir, other) {
 #	f <- paste(dir, other, sep="")
 #	.install.unix(f)

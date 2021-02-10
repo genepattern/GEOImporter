@@ -14,7 +14,7 @@ run <- function(libdir, args) {
 		install.required.packages(libdir)
 	}
 
-    library(Biobase)
+    #library(Biobase)
 }
 
 install.required.packages <- function(libdir) {

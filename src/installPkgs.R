@@ -7,7 +7,7 @@ run <- function(libdir, args) {
 	library(methods)
 	library(tools)
 
-	source(paste(libdir, "common.R", sep=''))
+	# source(paste(libdir, "common.R", sep=''))
 
 	if(libdir!='') {
 		setLibPath(libdir)

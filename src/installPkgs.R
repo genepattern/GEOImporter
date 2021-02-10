@@ -15,6 +15,15 @@ run <- function(libdir, args) {
 	}
 }
 
+setLibPath <- function(libdir) {
+	libPath <- libdir
+	if(!file.exists(libdir)) {
+		# remove trailing /
+		libPath <- substr(libdir, 0, nchar(libdir)-1)
+	}
+	.libPaths(libPath)
+}
+
 install.required.packages <- function(libdir) {
 	if(!is.package.installed(libdir, "BiocGenerics")) {
 		info("installing BiocGenerics")
@@ -51,4 +60,4 @@ install.package <- function(dir, other) {
 }
 
   init = commandArgs(trailingOnly = TRUE)
-run(libdir = init[1], args = as.list(init))
+run(libdir = , args = as.list(init))

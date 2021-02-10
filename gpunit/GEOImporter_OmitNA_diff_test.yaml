@@ -1,0 +1,26 @@
+#
+# Example job ran successfully with v. 5.5 on gpbeta server
+# Took about 8 minutes to complete (run to end)
+#
+# The example series is from GEO & the example output was vetted against previous versions of GEOImporter
+#
+name: GEOImporter example test - GSE72865
+module: "GEOImporter"
+params:
+    GEO.accession: "GSE72865"
+    GEO.SOFT.file: ""
+    Drop.NA.Rows: "true"
+    data.column.name: "VALUE"
+    output.filename: "<GEO.accession><GEO.SOFT.file_basename>"
+    ftp.proxy.server: ""
+    ftp.proxy.username: ""
+    ftp.proxy.password: ""
+    http.proxy.server: ""
+    http.proxy.username: ""
+    http.proxy.password: ""
+
+assertions:
+        jobStatus: success
+        files:
+            GSE72865.gct:
+                diff: output/GSE72865_OmitNA.gct

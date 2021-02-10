@@ -9,6 +9,7 @@ module: "GEOImporter"
 params:
     GEO.accession: "GSE72865"
     GEO.SOFT.file: ""
+    Drop.NA.Rows: "true"
     data.column.name: "VALUE"
     output.filename: "<GEO.accession><GEO.SOFT.file_basename>"
     ftp.proxy.server: ""

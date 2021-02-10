@@ -103,4 +103,4 @@ publicationDate=11/01/2007 20\:31
 quality=production
 taskType=Preprocess & Utilities
 userid=GenePattern
-version=First pass at new GEOImporter Docker image
+version=Updated to install packages in the image, rather than at run time.

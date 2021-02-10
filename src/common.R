@@ -441,6 +441,7 @@ is.package.installed <- function(libdir, pkg) {
 	return(file.exists(f) && file.info(f)[["isdir"]])
 }
 
+#moved to installPkgs.R - now run by the Dockerfile
 #install.package <- function(dir, other) {
 #	f <- paste(dir, other, sep="")
 #	.install.unix(f)

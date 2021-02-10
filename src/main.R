@@ -65,6 +65,7 @@ GdsToGct <- function(gds=NULL, gct.output.filename,
 	write.gct(gct, gct.output.filename)
 }
 
+# packages are now installed in the image to prevent msgs in stderr
 install.required.packages <- function(libdir) {
 	if(!is.package.installed(libdir, "BiocGenerics")) {
         info(pkg, "is not installed")

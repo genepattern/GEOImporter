@@ -1,3 +1,20 @@
+run <- function(libdir, args) {
+	suppressMessages(.run(libdir, args))
+}
+
+.run <- function(libdir, args) {
+
+	library(methods)
+	library(tools)
+
+	source(paste(libdir, "common.R", sep=''))
+
+	if(libdir!='') {
+		setLibPath(libdir)
+		install.required.packages(libdir)
+	}
+}
+
 install.required.packages <- function(libdir) {
 	if(!is.package.installed(libdir, "BiocGenerics")) {
 		info("installing BiocGenerics")
@@ -32,3 +49,6 @@ install.package <- function(dir, other) {
     if (status != 0)
     	cat("\tpackage installation failed\n")
 }
+
+  init = commandArgs(trailingOnly = TRUE)
+run(libdir = init[1], args = as.list(init))

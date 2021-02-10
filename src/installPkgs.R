@@ -13,6 +13,8 @@ run <- function(libdir, args) {
 		setLibPath(libdir)
 		install.required.packages(libdir)
 	}
+
+    library(Biobase)
 }
 
 install.required.packages <- function(libdir) {

@@ -60,4 +60,4 @@ install.package <- function(dir, other) {
 }
 
   init = commandArgs(trailingOnly = TRUE)
-run(libdir = , args = as.list(init))
+run(libdir = init[1] , args = as.list(init))

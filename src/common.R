@@ -455,7 +455,7 @@ install.package <- function(dir, other) {
 	cmd <- paste(file.path(R.home(), "bin", "R"), "CMD INSTALL")
     cmd <- paste(cmd, "-l", lib)
     cmd <- paste(cmd, " '", pkg, "'", sep = "")
-    status <- system(cmd)
+    status <- invisible(system(cmd, intern=TRUE))
     if (status != 0)
     	cat("\tpackage installation failed\n")
 }

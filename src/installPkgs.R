@@ -7,21 +7,12 @@ run <- function(libdir, args) {
 	library(methods)
 	library(tools)
 
-	# source(paste(libdir, "common.R", sep=''))
+	source(paste(libdir, "common.R", sep=''))
 
 	if(libdir!='') {
 		setLibPath(libdir)
 		install.required.packages(libdir)
 	}
-}
-
-setLibPath <- function(libdir) {
-	libPath <- libdir
-	if(!file.exists(libdir)) {
-		# remove trailing /
-		libPath <- substr(libdir, 0, nchar(libdir)-1)
-	}
-	.libPaths(libPath)
 }
 
 install.required.packages <- function(libdir) {

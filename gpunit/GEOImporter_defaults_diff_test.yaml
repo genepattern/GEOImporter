@@ -4,7 +4,7 @@
 #
 # The example series is from GEO & the example output was vetted against previous versions of GEOImporter
 #
-name: GEOImporter example test - GSE72865
+name: GEOImporter default test - GSE72865
 module: "GEOImporter"
 params:
     GEO.accession: "GSE72865"

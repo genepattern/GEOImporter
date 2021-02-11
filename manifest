@@ -99,4 +99,4 @@ publicationDate=02/16/2021
 quality=production
 taskType=Preprocess & Utilities
 userid=GenePattern
-version=Updated with a GEOImporter specific Docker container, and supports omitting rows containing all "NA" values
+version=Updated for NCIBI FTP paths. Added support omitting rows containing all "NA" values. Updated to use R-4.0.3 in a GEOImporter specific Docker container.

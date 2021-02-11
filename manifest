@@ -1,16 +1,12 @@
 #Tue Nov 24 19:37:11 UTC 2020
 author=Joshua Gould, Broad Institute; Anthony Castanza, UCSD; Barbara Hill, Broad Institute
 commandLine=Rscript --no-save --quiet --slave --no-restore /GEOImporter/main.R /GEOImporter/ -n<Drop.NA.Rows> -d<data.column.name> -o<output.filename> -a<GEO.accession> -f<GEO.SOFT.file> -1<ftp.proxy.server> -2<ftp.proxy.username> -3<ftp.proxy.password> -4<http.proxy.server> -5<http.proxy.username> -6<http.proxy.password>
-cpuType=any
 description=Imports data from the Gene Expression Omnibus (GEO)
 fileFormat=gct
-job.docker.image=genepattern/geoimporter:alpha
+job.docker.image=genepattern/geoimporter:1
 src.repo=https://github.com/genepattern/GEOImporter/releases/tag/v6
-JVMLevel=
-language=any
 LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00042\:6
 name=GEOImporter
-os=any
 p1_default_value=
 p1_description=GEO Series record (GSExxx) or a GEO Dataset (GDSxxx). Either a GEO accession or a GEO SOFT file must be given.
 p1_name=GEO.accession
@@ -99,8 +95,8 @@ p11_type=PASSWORD
 p11_value=
 
 privacy=public
-publicationDate=11/01/2007 20\:31 
+publicationDate=02/16/2021
 quality=production
 taskType=Preprocess & Utilities
 userid=GenePattern
-version=Updated to install packages in the image, rather than at run time - prod RC
+version=Updated with a GEOImporter specific Docker container, and supports omitting rows containing all "NA" values

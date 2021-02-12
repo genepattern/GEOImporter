@@ -95,8 +95,8 @@ p11_type=PASSWORD
 p11_value=
 
 privacy=public
-publicationDate=02/16/2021
+publicationDate=02/16/2021 20\:31
 quality=production
 taskType=Preprocess & Utilities
 userid=GenePattern
-version=Updated for NCIBI FTP paths. Added support omitting rows containing all "NA" values. Updated to use R-4.0.3 in a GEOImporter specific Docker container.
+version=Updated NCIBI FTP paths. Added ability to omit rows with all NA values. Updated to use R 4.0.3 via module specific Docker container.
